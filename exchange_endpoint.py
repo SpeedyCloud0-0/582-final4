@@ -91,7 +91,6 @@ def fill_order(order,txes=[]):
         g.session.commit()
         fill_order(new_order_obj)
 
-    pass
   
 def log_message(d):
     # Takes input dictionary d and writes it to the Log table
