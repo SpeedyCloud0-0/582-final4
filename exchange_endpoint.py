@@ -32,7 +32,7 @@ def shutdown_session(response_or_exc):
 """ Suggested helper methods """
 
 def check_sig(payload,sig):
-	signature = sig
+    signature = sig
     message = json.dumps(payload)
     pk = payload.get("sender_pk")
     platform = payload.get("platform")
@@ -46,16 +46,16 @@ def check_sig(payload,sig):
     return result
 
 def fill_order(order,txes=[]):
-	# if isinstance(order, dict):
+    # if isinstance(order, dict):
  #        order_obj = Order(sender_pk=order['sender_pk'], receiver_pk=order['receiver_pk'],
  #                          buy_currency=order['buy_currency'], sell_currency=order['sell_currency'],
  #                          buy_amount=order['buy_amount'], sell_amount=order['sell_amount'])
  #    else:
  #        order_obj = order
  #        session.add(order_obj)
- #    	session.commit()
+ #        session.commit()
 
-	matched = False
+    matched = False
     for existing_oder in txes:
         if existing_oder.buy_currency == order_obj.sell_currency and \
                 existing_oder.sell_currency == order_obj.buy_currency:
@@ -148,8 +148,8 @@ def trade():
             return jsonify(False)
 
         # TODO: Fill the order
-		orders = [order for order in g.session.query(Order).filter(Order.filled == None).all()]
-		fill_order(order_obj, orders)
+        orders = [order for order in g.session.query(Order).filter(Order.filled == None).all()]
+        fill_order(order_obj, orders)
         
         return jsonify(True)
         # TODO: Be sure to return jsonify(True) or jsonify(False) depending on if the method was successful
